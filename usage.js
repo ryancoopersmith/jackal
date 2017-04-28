@@ -1,3 +1,6 @@
-var array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-var test = J.createBellCurve(array);
-console.log(test);
+var array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 2, 3, 6, 5, 4, 8, 9, 11];
+var testBellCurve = _J.createBellCurve(array);
+console.log(testBellCurve);
+
+var testRandomize = _J.randomize(['hi', 'how', 'are', 'you']);
+console.log(testRandomize);

@@ -1,11 +1,18 @@
 ;(function(global) {
   var jackal = {};
 
+  // Polyfill for Array.isArray
+  if (!Array.isArray) {
+    Array.isArray = function(arg) {
+      return Object.prototype.toString.call(arg) === '[object Array]';
+    };
+  }
+
   // Takes an array and formats it so that the largest integers
   // are in the middle and the smallest integers are towards the
   // beginning and ends of the array.
   jackal.createBellCurve = function(arr) {
-    if (arr[0]) {
+    if (Array.isArray(arr)) {
       var bellCurve = [];
       var length = arr.length;
 
@@ -27,9 +34,26 @@
     }
   };
 
+  // Randomizes array. Not perfect, but any better
+  // would drastically increase the time complexity.
   jackal.randomize = function(arr) {
-    
-  }
+    if (Array.isArray(arr)) {
+      var currentIndex = arr.length;
+      var temporaryValue, randomIndex;
 
-  global.jackal = global.J = jackal;
+      while (currentIndex > 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = arr[currentIndex];
+        arr[currentIndex] = arr[randomIndex];
+        arr[randomIndex] = temporaryValue;
+      }
+
+      return arr;
+    } else {
+      throw 'Cannot randomize ' + typeof arr;
+    }
+  };
+
+  global.jackal = global._J = jackal;
 }(window));
