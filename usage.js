@@ -4,3 +4,6 @@ console.log(testBellCurve);
 
 var testRandomize = _J.randomize(['hi', 'how', 'are', 'you']);
 console.log(testRandomize);
+
+var testArray = [1, 2, 3, 5, 10, 6];
+console.log(_J.stdDeviation(testArray));

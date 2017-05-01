@@ -55,5 +55,29 @@
     }
   };
 
+  jackal.stdDeviation = function(arr) {
+    if (Array.isArray(arr)) {
+      var sum = arr.reduce(function(a, b) {
+        return a + b;
+      }, 0);
+      var mean = sum / arr.length;
+      var squaredPrices = [];
+      arr.forEach((ele) => {
+        squaredPrices.push(Math.pow((ele - mean), 2));
+      });
+      var squaredSum = squaredPrices.reduce(function(a, b) {
+        return a + b;
+      }, 0);
+      var squaredMean = squaredSum / squaredPrices.length;
+      var stdDeviation = Math.sqrt(squaredMean);
+      return stdDeviation;
+    } else {
+      throw 'Cannot calculate standard deviation for ' + typeof arr;
+    }
+  };
+
+  // Create method that maps a function and then reduces it twice
+  // Useful for React and foundation grids
+
   global.jackal = global._J = jackal;
 }(window));
