@@ -7,3 +7,5 @@ console.log(testRandomize);
 
 var testArray = [1, 2, 3, 5, 10, 6];
 console.log(_J.stdDeviation(testArray));
+
+console.log(_J.multipleSum(1000, 3, 5));

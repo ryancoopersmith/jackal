@@ -1,7 +1,7 @@
 ;(function(global) {
   var jackal = {};
 
-  // Polyfill for Array.isArray
+  // Polyfill for Array.isArray()
   if (!Array.isArray) {
     Array.isArray = function(arg) {
       return Object.prototype.toString.call(arg) === '[object Array]';
@@ -76,8 +76,19 @@
     }
   };
 
-  // Create method that maps a function and then reduces it twice
-  // Useful for React and foundation grids
+  jackal.multipleSum = function(max, mult1, mult2) {
+    if (typeof max === 'number' && typeof mult1 === 'number' && typeof mult2 === 'number') {
+      var sum = 0;
+      for (var i = 1; i < max; i++) {
+        if (i % mult1 === 0 && i >= mult1 || i % mult2 === 0 && i >= mult2) {
+          sum += i;
+        }
+      }
+      return sum;
+    } else {
+      throw 'One or more arguments is not a number';
+    }
+  }
 
   global.jackal = global._J = jackal;
 }(window));
