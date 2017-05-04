@@ -88,7 +88,21 @@
     } else {
       throw 'One or more arguments is not a number';
     }
-  }
+  };
+
+  jackal.evenFibonacci = function(max) {
+    var fibbs = [1, 2]
+    for (var i = 0; i < fibbs.length; i++) {
+      var num = fibbs[i] + fibbs[i + 1];
+      if (num <= max) {
+        fibbs.push(num);
+      }
+    }
+    var sum = fibbs.reduce(function(acc, val) {
+      return val % 2 === 0 ? acc + val : acc;
+    }, 0);
+    return sum;
+  };
 
   global.jackal = global._J = jackal;
 }(window));
