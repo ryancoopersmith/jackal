@@ -104,5 +104,31 @@
     return sum;
   };
 
+  // Quadratic sieve
+  jackal.primeFactor = function(num) {
+    var largest = 0;
+    for (var i = 1; i < num; i++) {
+      var factor = num % i;
+      if (factor * i === num) {
+        largest = i;
+      }
+    }
+    return largest;
+  };
+
+  jackal.factorialDigitSum = function(num) {
+    var factorial = 1;
+    for (var i = num; i > 0; i--) {
+      factorial *= num;
+    }
+    factorial = toFixed(factorial) + '';
+    var chars = factorial.split('');
+    var sum = 0;
+    for (var i = 0; i < chars.length; i++) {
+      sum += parseInt(chars[i]);
+    }
+    return sum;
+  };
+
   global.jackal = global._J = jackal;
 }(window));
